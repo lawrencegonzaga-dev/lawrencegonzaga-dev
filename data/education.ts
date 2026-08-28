@@ -7,7 +7,8 @@ export const education = [
       "Machine Learning",
       "Database Systems",
       "Software Engineering",
-      "Web Development"
-    ]
-  }
+      "Web Development",
+      "Data Strucure & Algorithm",
+    ],
+  },
 ];

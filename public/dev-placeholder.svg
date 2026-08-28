@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 280">
+  <defs>
+    <linearGradient id="devGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5ad1e8"/>
+      <stop offset="1" stop-color="#a99bf4"/>
+    </linearGradient>
+  </defs>
+  <!-- Stylized developer placeholder — replace this file with a real
+       transparent-background photo, or update profile.photo. -->
+  <circle cx="140" cy="106" r="62" fill="url(#devGrad)"/>
+  <path d="M46 268c0-60 42-94 94-94s94 34 94 94v6H46z" fill="url(#devGrad)"/>
+  <path d="M90 226h100c5 0 9 4 9 9v7c0 15-12 26-28 26h-62c-16 0-28-11-28-26v-7c0-5 4-9 9-9z" fill="#080c16" opacity="0.88"/>
+  <text x="140" y="252" font-family="monospace" font-size="17" fill="#5ad1e8" text-anchor="middle">&gt;_</text>
+</svg>

@@ -1,19 +1,30 @@
 import Link from "next/link";
+import ThemeToggle from "@/components/ThemeToggle";
 
-export default function Navbar(){
+const links = [
+  { href: "/#projects", label: "projects" },
+  { href: "/#skills", label: "skills" },
+  { href: "/#experience", label: "experience" },
+  { href: "/#about", label: "about" },
+  { href: "/#contact", label: "contact" },
+];
+
+export default function Navbar() {
   return (
-    <nav>
+    <nav aria-label="Main navigation">
       <div className="wrap">
-        <Link href="/" className="nav-logo">lawrence.gonzaga</Link>
+        <Link href="/" className="nav-logo">
+          lawrence.gonzaga
+        </Link>
         <div className="nav-links">
-          <Link href="#about">about</Link>
-          <Link href="#journey">journey</Link>
-          <Link href="#skills">skills</Link>
-          <Link href="#projects">projects</Link>
-          <Link href="#work">process</Link>
-          <Link href="#contact">contact</Link>
+          {links.map((link) => (
+            <Link key={link.href} href={link.href}>
+              {link.label}
+            </Link>
+          ))}
         </div>
+        <ThemeToggle />
       </div>
     </nav>
-  )
+  );
 }

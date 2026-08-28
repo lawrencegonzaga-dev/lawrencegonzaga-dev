@@ -1,29 +1,37 @@
 import Background from "@/components/Background";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import About from "@/components/About";
-import Journey from "@/components/Journey";
-import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
+import Skills from "@/components/Skills";
+import Experience from "@/components/Experience";
+import Education from "@/components/Education";
+import About from "@/components/About";
 import WorkProcess from "@/components/WorkProcess";
-import Learning from "@/components/Learning";
 import Outside from "@/components/Outside";
 import Footer from "@/components/Footer";
+import RevealObserver from "@/components/RevealObserver";
 
-export default function Home(){
+// Recruiter flow: what was built → with what → proof of work → who → contact.
+export default function Home() {
   return (
     <>
-      <Background/>
-      <Navbar/>
-      <Hero/>
-      <About/>
-      <Journey/>
-      <Skills/>
-      <Projects/>
-      <WorkProcess/>
-      <Learning/>
-      <Outside/>
-      <Footer/>
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
+      <Background />
+      <Navbar />
+      <main id="main">
+        <Hero />
+        <Projects />
+        <Skills />
+        <Experience />
+        <Education />
+        <About />
+        <WorkProcess />
+        <Outside />
+      </main>
+      <Footer />
+      <RevealObserver />
     </>
-  )
+  );
 }

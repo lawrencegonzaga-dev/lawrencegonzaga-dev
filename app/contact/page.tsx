@@ -1,19 +1,61 @@
+import type { Metadata } from "next";
+import { ArrowUpRight, Download, Github, Linkedin, Mail } from "lucide-react";
 import ContactForm from "@/components/ContactForm";
+import PageShell from "@/components/PageShell";
+import { contact } from "@/data/contact";
 
-export default function ContactPage(){
+export const metadata: Metadata = {
+  title: "Contact | Lawrence Gonzaga",
+  description: contact.intro,
+};
+
+export default function ContactPage() {
   return (
-    <main className="max-w-4xl mx-auto px-6 py-16">
-      <h1 className="text-4xl font-bold">Let's Work Together</h1>
-      <p className="text-slate-400 mt-4">I'm open to:</p>
-      <ul className="text-slate-400 mt-4 space-y-2">
-        <li>• Remote Frontend Development</li>
-        <li>• Full-Stack Projects</li>
-        <li>• AI Automation Solutions</li>
-        <li>• Freelance Work</li>
-      </ul>
-      <div className="mt-8">
-        <ContactForm/>
+    <PageShell>
+      <div className="contact-page">
+        <p className="eyebrow">Contact</p>
+        <h1 className="contact-title">{contact.cta}</h1>
+        <div className="contact-grid">
+          <aside className="contact-info" data-reveal>
+            <p className="contact-intro">{contact.intro}</p>
+
+            <a className="contact-row" href={`mailto:${contact.email}`}>
+              <Mail size={17} aria-hidden="true" />
+              <span>{contact.email}</span>
+            </a>
+            <a
+              className="contact-row"
+              href={contact.github}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Github size={17} aria-hidden="true" />
+              <span>github.com/lawrencegonzaga-dev</span>
+              <ArrowUpRight size={14} aria-hidden="true" className="row-arrow" />
+            </a>
+            <a
+              className="contact-row"
+              href={contact.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Linkedin size={17} aria-hidden="true" />
+              <span>linkedin.com/in/lawrence-gonzaga</span>
+              <ArrowUpRight size={14} aria-hidden="true" className="row-arrow" />
+            </a>
+            {contact.cv && (
+              <a className="contact-row" href={contact.cv} download>
+                <Download size={17} aria-hidden="true" />
+                <span>{contact.buttonText.cv}</span>
+              </a>
+            )}
+          </aside>
+
+          <div className="contact-form-card" data-reveal>
+            <ContactForm />
+          </div>
+        </div>
       </div>
-    </main>
-  )
+    </PageShell>
+  );
 }

@@ -22,3 +22,14 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
+# AI agent tooling (local only — never commit agent config/artifacts)
+.clinerules/
+.cline/
+.clinerules.code-workspace
+.codex/
+.graphifyignore
+graphify-out/
+AGENTS.md
+tsconfig.tsbuildinfo
+*.tsbuildinfo

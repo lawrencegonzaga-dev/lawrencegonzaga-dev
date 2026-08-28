@@ -1,0 +1,9 @@
+.next/
+node_modules/
+out/
+graphify-out/
+.cline/
+.clinerules/
+.codex/
+package-lock.json
+next-env.d.ts

@@ -3,6 +3,7 @@
 Premium Next.js portfolio.
 
 Features:
+
 - Next.js App Router
 - Tailwind CSS
 - Framer Motion animations
