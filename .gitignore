@@ -33,3 +33,4 @@ graphify-out/
 AGENTS.md
 tsconfig.tsbuildinfo
 *.tsbuildinfo
+.vercel/
