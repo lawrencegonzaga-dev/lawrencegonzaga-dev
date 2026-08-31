@@ -74,6 +74,7 @@ export default function ContactForm() {
           id="contact-name"
           name="name"
           type="text"
+          required
           autoComplete="name"
           maxLength={NAME_MAX}
           placeholder="Your name"
@@ -95,6 +96,7 @@ export default function ContactForm() {
           id="contact-email"
           name="email"
           type="email"
+          required
           autoComplete="email"
           maxLength={EMAIL_MAX}
           placeholder="you@example.com"
@@ -115,6 +117,7 @@ export default function ContactForm() {
         <textarea
           id="contact-message"
           name="message"
+          required
           rows={6}
           maxLength={MESSAGE_MAX}
           placeholder="What would you like to build?"

@@ -31,6 +31,36 @@ describe("projects data integrity", () => {
       expect(project.challenges.length).toBeGreaterThan(0);
     }
   });
+
+  it("keeps each case study proof-ready with 3 to 5 labelled screenshot slots", () => {
+    for (const project of projects) {
+      expect(project.screenshots.length).toBeGreaterThanOrEqual(3);
+      expect(project.screenshots.length).toBeLessThanOrEqual(5);
+
+      for (const screenshot of project.screenshots) {
+        expect(screenshot.alt.length).toBeGreaterThan(0);
+        expect(screenshot.caption.length).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  it("orders the Flowboard proof sequence and maps its real screenshot accurately", () => {
+    const flowboard = findProjectBySlug("flowboard");
+
+    expect(flowboard?.screenshots.map(({ caption }) => caption)).toEqual([
+      "Private dashboard",
+      "Project / task workspace",
+      "Drag-and-drop board",
+      "Deadline calendar",
+      "Workspace assistant",
+    ]);
+    expect(flowboard?.screenshots.filter(({ src }) => src)).toEqual([
+      expect.objectContaining({
+        src: "/flowboard-photo.png",
+        caption: "Workspace assistant",
+      }),
+    ]);
+  });
 });
 
 describe("project helpers", () => {

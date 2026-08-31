@@ -6,14 +6,20 @@ export default function Experience() {
       <div className="wrap">
         <div className="eyebrow">Experience</div>
         <h2 className="sec-title">
-          Where I&apos;ve <span className="accent">built.</span>
+          Professional <span className="accent">Experience</span>
         </h2>
+        <p className="sec-lead">
+          Contributing to real client software and production-oriented workflows.
+        </p>
         <div className="exp-list">
           {experience.map((job) => (
             <article className="exp-entry" key={job.company}>
               <h3>{job.role}</h3>
-              <div className="exp-company">{job.company}</div>
+              <div className="exp-company">
+                {job.company} · {job.period}
+              </div>
               <p className="exp-summary">{job.summary}</p>
+              <h4 className="exp-note">{job.responsibilitiesHeading}</h4>
               <ul>
                 {job.highlights.map((item) => (
                   <li key={item}>{item}</li>

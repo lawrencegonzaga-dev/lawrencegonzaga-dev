@@ -7,23 +7,23 @@ const space = Space_Grotesk({ subsets: ["latin"], variable: "--font-display" });
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 const description =
-  "Software Developer building modern web applications, full-stack systems, and automation solutions with React, Next.js, TypeScript, Node.js, and Python.";
+  "Frontend Developer building responsive, production-style web applications with React, Next.js, TypeScript, and practical full-stack experience.";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
 export const metadata: Metadata = {
   ...(siteUrl ? { metadataBase: new URL(siteUrl) } : {}),
-  title: "Lawrence Gonzaga | Software Developer",
+  title: "Lawrence Gonzaga | Frontend Developer",
   description,
   openGraph: {
-    title: "Lawrence Gonzaga | Software Developer",
+    title: "Lawrence Gonzaga | Frontend Developer",
     description,
     type: "website",
     ...(siteUrl ? { url: siteUrl } : {}),
   },
   twitter: {
     card: "summary",
-    title: "Lawrence Gonzaga | Software Developer",
+    title: "Lawrence Gonzaga | Frontend Developer",
     description,
   },
 };

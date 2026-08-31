@@ -6,8 +6,6 @@ import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
 import Education from "@/components/Education";
 import About from "@/components/About";
-import WorkProcess from "@/components/WorkProcess";
-import Outside from "@/components/Outside";
 import Footer from "@/components/Footer";
 import RevealObserver from "@/components/RevealObserver";
 
@@ -27,8 +25,6 @@ export default function Home() {
         <Experience />
         <Education />
         <About />
-        <WorkProcess />
-        <Outside />
       </main>
       <Footer />
       <RevealObserver />

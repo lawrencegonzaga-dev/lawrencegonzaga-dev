@@ -1,14 +1,18 @@
+export const educationLead =
+  "Computer science foundation supporting practical software development.";
+
 export const education = [
   {
     degree: "Bachelor of Science in Computer Science",
     school: "Ateneo de Davao University",
     graduation: "Expected Graduation: June 2027",
-    coursework: [
-      "Machine Learning",
+    focus: [
+      "Software Development",
+      "Web Development",
+      "Data Structures & Algorithms",
       "Database Systems",
       "Software Engineering",
-      "Web Development",
-      "Data Strucure & Algorithm",
+      "Artificial Intelligence / Machine Learning",
     ],
   },
 ];

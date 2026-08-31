@@ -23,8 +23,4 @@ export const skillGroups: SkillGroup[] = [
     title: "Engineering",
     tags: ["Git", "GitHub", "Zod", "Vitest"],
   },
-  {
-    title: "Automation & AI",
-    tags: ["Python", "Rasa"],
-  },
 ];

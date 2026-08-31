@@ -6,7 +6,7 @@ export const contact = {
   // exists in public/. Until then the Download CV button stays hidden.
   cv: "/Gonzaga-CV.pdf",
   intro:
-    "I'm open to software development roles and freelance projects — web applications, full-stack systems, and automation solutions.",
+    "I'm open to junior frontend and software development opportunities, with a focus on React, Next.js, TypeScript, and modern web applications.",
   cta: "Let's build something.",
   copyright: "© 2026 Lawrence Gonzaga",
   tagline: "Built with React → shipped with intent",

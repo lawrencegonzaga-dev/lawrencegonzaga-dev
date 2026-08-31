@@ -2,20 +2,32 @@
 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import { ArrowRight, Code2, Coffee, Download, Github, Linkedin } from "lucide-react";
 import {
-  ArrowRight,
-  Code2,
-  Coffee,
-  Download,
-  Github,
-  Linkedin,
-  MoonStar,
-  Utensils,
-} from "lucide-react";
+  siJavascript,
+  siNextdotjs,
+  siReact,
+  siTailwindcss,
+  siTypescript,
+} from "simple-icons";
 import { contact } from "@/data/contact";
 import { profile } from "@/data/profile";
 
-const orbitIcons = [MoonStar, Coffee, Code2, Utensils] as const;
+const orbitItems = [
+  { icon: Coffee, label: "Coffee" },
+  { icon: Code2, label: "Code" },
+] as const;
+
+// Official brand marks (filled, not outline). Every icon renders in the same
+// currentColor so the row looks consistent; no text needed — hiring managers
+// recognize the logos instantly.
+const stackItems = [
+  { icon: siReact, label: "React" },
+  { icon: siNextdotjs, label: "Next.js" },
+  { icon: siTypescript, label: "TypeScript" },
+  { icon: siJavascript, label: "JavaScript" },
+  { icon: siTailwindcss, label: "Tailwind CSS" },
+] as const;
 
 export default function Hero() {
   const typedRef = useRef<HTMLSpanElement>(null);
@@ -26,8 +38,8 @@ export default function Hero() {
     const el = target;
     const lines = profile.heroTerminal;
 
-    // The typewriter is decorative; the static heading and role above carry
-    // the same information for recruiters and screen readers.
+    // The typewriter is decorative; the static heading and role carry the
+    // same information for recruiters and screen readers.
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       el.textContent = lines[1] ?? lines[0];
       return;
@@ -62,7 +74,6 @@ export default function Hero() {
     typeLoop();
     return () => clearTimeout(timer);
   }, []);
-
   return (
     <header className="hero">
       <div className="wrap hero-grid">
@@ -81,12 +92,19 @@ export default function Hero() {
             </div>
           </div>
 
-          <h1>{profile.h1}</h1>
-          <div className="role">{profile.role}</div>
+          <p className="hero-kicker">{profile.h1}</p>
+          <h1>{profile.role}</h1>
           <p className="lede">{profile.lede}</p>
-          <div className="stack-line">
-            <b>Stack:</b> {profile.focusOn}
-          </div>
+          <ul className="stack-icons" aria-label="Tech stack">
+            {stackItems.map(({ icon, label }) => (
+              <li className="stack-chip" key={label}>
+                <svg viewBox="0 0 24 24" width="20" height="20">
+                  <title>{label}</title>
+                  <path d={icon.path} />
+                </svg>
+              </li>
+            ))}
+          </ul>
           <div className="btn-row">
             <a href="#projects" className="btn btn-primary">
               View Projects <ArrowRight size={15} aria-hidden="true" />
@@ -114,15 +132,11 @@ export default function Hero() {
               <Linkedin size={15} aria-hidden="true" /> LinkedIn
             </a>
           </div>
-
-          <p className="hero-quote">“{profile.quote}”</p>
         </div>
 
         <div className="hero-photo">
           <div className="hero-orbit">
             <span className="hero-orbit-halo" aria-hidden="true" />
-            <span className="hero-orbit-ring hero-orbit-ring-outer" aria-hidden="true" />
-            <span className="hero-orbit-ring hero-orbit-ring-inner" aria-hidden="true" />
 
             <div className="hero-portrait-shell">
               <div className="hero-portrait-wrap">
@@ -148,25 +162,16 @@ export default function Hero() {
             </div>
 
             <ul className="hero-orbit-list" aria-label="Daily essentials">
-              {profile.funFacts.map((fact, index) => {
-                const Icon = orbitIcons[index] ?? Code2;
-
-                return (
-                  <li className="hero-orbit-item" key={fact}>
-                    <span className="hero-orbit-icon">
-                      <Icon aria-hidden="true" />
-                      <span className="sr-only">{fact}</span>
-                    </span>
-                  </li>
-                );
-              })}
+              {orbitItems.map(({ icon: Icon, label }) => (
+                <li className="hero-orbit-item" key={label}>
+                  <span className="hero-orbit-icon">
+                    <Icon aria-hidden="true" />
+                    <span className="sr-only">{label}</span>
+                  </span>
+                </li>
+              ))}
             </ul>
           </div>
-
-          <p className="hero-availability">
-            <span className="hero-status-dot" aria-hidden="true" />
-            {profile.status}
-          </p>
         </div>
       </div>
     </header>

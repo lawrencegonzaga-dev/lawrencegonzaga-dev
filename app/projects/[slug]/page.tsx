@@ -18,6 +18,7 @@ import {
 import { notFound } from "next/navigation";
 import PageShell from "@/components/PageShell";
 import { projects } from "@/data/projects";
+import type { ProjectScreenshot } from "@/data/projects";
 import { findProjectBySlug } from "@/lib/projects";
 
 export function generateStaticParams() {
@@ -51,6 +52,49 @@ function SectionHeading({ icon, label }: { icon: React.ReactNode; label: string 
   );
 }
 
+// A screenshot placed between sections. When the real image is not added yet
+// (src is undefined) we still render a themed placeholder with the alt and
+// caption so the case study is proof-ready: the image slot is visible now.
+function CaseScreenshot({
+  shot,
+  index,
+  priority = false,
+}: {
+  shot: ProjectScreenshot;
+  index: number;
+  priority?: boolean;
+}) {
+  return (
+    <figure className="case-figure" data-reveal>
+      <div className="case-figure-media">
+        {shot.src ? (
+          <Image
+            src={shot.src}
+            alt={shot.alt}
+            width={1600}
+            height={900}
+            sizes="(max-width: 760px) calc(100vw - 40px), 904px"
+            priority={priority}
+            className="case-figure-img"
+          />
+        ) : (
+          <div className="case-figure-placeholder">
+            <span className="sr-only">{shot.alt}</span>
+            <span className="case-figure-number" aria-hidden="true">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <div>
+              <p className="case-figure-status">Screenshot placeholder</p>
+              <p className="case-figure-label">{shot.caption}</p>
+            </div>
+          </div>
+        )}
+      </div>
+      <figcaption className="case-caption">{shot.caption}</figcaption>
+    </figure>
+  );
+}
+
 export default async function ProjectPage({
   params,
 }: {
@@ -62,6 +106,8 @@ export default async function ProjectPage({
   if (!project) {
     notFound();
   }
+
+  const [heroShot, shotA, shotB, shotC, shotD] = project.screenshots;
 
   return (
     <PageShell>
@@ -84,43 +130,28 @@ export default async function ProjectPage({
           </div>
 
           <div className="case-actions">
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-primary"
-            >
-              <Github size={15} aria-hidden="true" /> View Repository
-            </a>
             {project.liveDemo && (
               <a
                 href={project.liveDemo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-ghost"
+                className="btn btn-primary"
               >
                 <ExternalLink size={15} aria-hidden="true" /> Live Demo
               </a>
             )}
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-ghost"
+            >
+              <Github size={15} aria-hidden="true" /> Repository
+            </a>
           </div>
         </header>
 
-        <div className="case-shot" data-reveal>
-          {project.image ? (
-            <Image
-              src={project.image}
-              alt={project.imageAlt ?? `${project.title} screenshot`}
-              width={1200}
-              height={700}
-              className="case-shot-img"
-            />
-          ) : (
-            <div className="case-shot-placeholder" aria-hidden="true">
-              <span>{project.title}</span>
-              <p>screenshot pending — add public/projects/{project.slug}.webp</p>
-            </div>
-          )}
-        </div>
+        {heroShot && <CaseScreenshot shot={heroShot} index={0} priority />}
 
         <section className="case-section" data-reveal>
           <SectionHeading icon={<BookOpen size={18} />} label="Overview" />
@@ -143,6 +174,9 @@ export default async function ProjectPage({
             </div>
           </div>
         </section>
+
+        {shotA && <CaseScreenshot shot={shotA} index={1} />}
+
         <section className="case-section" data-reveal>
           <SectionHeading icon={<Layers size={18} />} label="Architecture" />
           <ul className="case-list">
@@ -171,6 +205,8 @@ export default async function ProjectPage({
           </ul>
         </section>
 
+        {shotB && <CaseScreenshot shot={shotB} index={2} />}
+
         <section className="case-section" data-reveal>
           <SectionHeading icon={<Wrench size={18} />} label="Technical Decisions" />
           <div className="case-decisions">
@@ -181,6 +217,8 @@ export default async function ProjectPage({
             ))}
           </div>
         </section>
+
+        {shotC && <CaseScreenshot shot={shotC} index={3} />}
 
         <section className="case-section" data-reveal>
           <SectionHeading icon={<Boxes size={18} />} label="Challenges &amp; Solutions" />
@@ -200,30 +238,32 @@ export default async function ProjectPage({
           </div>
         </section>
 
+        {shotD && <CaseScreenshot shot={shotD} index={4} />}
+
         <section className="case-final" data-reveal>
           <h2>Explore {project.title}</h2>
           <p>Read the code, open the app, or start a conversation.</p>
           <div className="case-actions">
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-primary"
-            >
-              <Github size={15} aria-hidden="true" /> View Repository
-              <ArrowUpRight size={14} aria-hidden="true" />
-            </a>
             {project.liveDemo && (
               <a
                 href={project.liveDemo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-ghost"
+                className="btn btn-primary"
               >
                 <ExternalLink size={15} aria-hidden="true" /> Live Demo
                 <ArrowUpRight size={14} aria-hidden="true" />
               </a>
             )}
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={project.liveDemo ? "btn btn-ghost" : "btn btn-primary"}
+            >
+              <Github size={15} aria-hidden="true" /> Repository
+              <ArrowUpRight size={14} aria-hidden="true" />
+            </a>
             <Link href="/contact" className="btn btn-ghost">
               Contact Me
             </Link>

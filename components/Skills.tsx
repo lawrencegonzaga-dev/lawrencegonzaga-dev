@@ -6,7 +6,7 @@ export default function Skills() {
       <div className="wrap">
         <div className="eyebrow">Technical Skills</div>
         <h2 className="sec-title">
-          What I <span className="accent">build with.</span>
+          Core <span className="accent">technologies</span>
         </h2>
         <div className="skills-grid">
           {skillGroups.map((group) => (

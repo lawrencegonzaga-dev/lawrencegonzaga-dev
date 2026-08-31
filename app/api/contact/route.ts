@@ -51,6 +51,7 @@ export async function POST(request: Request) {
       // the Resend domain is verified.
       from: process.env.CONTACT_FROM_EMAIL ?? "Portfolio Contact <onboarding@resend.dev>",
       to: process.env.CONTACT_TO_EMAIL ?? contact.email,
+      replyTo: input.email,
       subject: `Portfolio message from ${input.name}`,
       text: `${input.name} <${input.email}> wrote:\n\n${input.message}`,
       html: `

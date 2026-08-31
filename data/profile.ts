@@ -1,27 +1,26 @@
 export const profile = {
   name: "Lawrence Gonzaga",
-  role: "Software Developer",
+  role: "Frontend Developer",
   tagline:
-    "Software Developer building modern web applications, full-stack systems, and automation solutions.",
-  h1: "Lawrence Gonzaga builds software that works.",
-  lede: "I build modern web applications, full-stack systems, and automation solutions — from polished interfaces to APIs, databases, and automation workflows.",
-  bio: `I'm a software developer who builds applications end to end: React and Next.js frontends, REST APIs and backend services, and automation built on Python.
+    "Frontend Developer building responsive, production-style web applications with React, Next.js, and TypeScript.",
+  h1: "Lawrence Gonzaga",
+  lede: `I solve product problems by building reliable web applications.
+I create responsive frontend experiences with React and Next.js, backed by practical full-stack experience across APIs, databases, authentication, validation, and backend services.`,
+  bio: `I'm a frontend-focused developer building responsive web applications with React, Next.js, TypeScript, and modern web technologies.
 
-Recent work includes a full-stack project management SaaS with authentication and database-level security, a CRM with enforced business lifecycles, and a FastAPI telemetry service with rule-based risk scoring.`,
-  focusOn: "React · Next.js · TypeScript · Node.js · Python",
-  // Terminal decorative lines. Static content in Hero carries the same
-  // information for recruiters and screen readers; this is garnish.
+I also have practical full-stack experience with APIs, databases, authentication, and backend services, which helps me understand applications beyond the interface.`,
+  focusOn: "React · Next.js · TypeScript · JavaScript · Tailwind CSS",
+  // Terminal decorative lines. The static heading and role carry the same
+  // information for recruiters and screen readers; this is personality.
   heroTerminal: [
     "whoami",
-    "→ software developer — web apps, full-stack systems, automation",
-    "cat stack.txt",
-    "→ react · next.js · typescript · node.js · python",
+    "→ frontend developer — React · Next.js · TypeScript",
+    "cat focus.txt",
+    "→ responsive web apps · APIs · clean UI",
   ],
   // Your transparent photo lives at public/profile.png. Swap the file or
   // this path to update the portrait in the Hero.
   photo: "/profile.png",
-  photoAlt: "Lawrence Gonzaga, Software Developer",
-  status: "Available for software development roles",
-  quote: "Code is read far more often than it is written.",
-  funFacts: ["Sleep", "Coffee", "Code", "Eat"],
+  photoAlt: "Lawrence Gonzaga, Frontend Developer",
+  status: "Available for junior frontend and software development opportunities",
 };

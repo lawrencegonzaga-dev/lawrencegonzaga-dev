@@ -6,7 +6,7 @@ export default function About() {
       <div className="wrap">
         <div className="eyebrow">About</div>
         <h2 className="sec-title">
-          What I <span className="accent">build.</span>
+          About <span className="accent">me</span>
         </h2>
         <div className="about-text">
           {profile.bio.split("\n\n").map((paragraph) => (
